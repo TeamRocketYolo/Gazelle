@@ -32,7 +32,7 @@ if (!is_array($App)) {
 	$DB->query("
 		SELECT Token, Name
 		FROM api_applications
-		WHERE ID = '"+db_string($AppID)+"'
+		WHERE ID = '".db_string($AppID)."'
 		LIMIT 1");
 	$App = $DB->to_array(false, MYSQLI_ASSOC);
 	$Cache->cache_value("api_apps_$AppID", $App, 0);
@@ -54,7 +54,7 @@ if ($_GET['req'] === 'access_request') {
 		$DB->query("
 			SELECT AppID, Token, State, Time, Access
 			FROM api_users
-			WHERE UserID = '"+db_string($UserID)+"'
+			WHERE UserID = '".db_string($UserID)."'
 			LIMIT 1"); //int, no db_string
 		$User = $DB->to_array('AppID', MYSQLI_ASSOC);
 		$Cache->cache_value("api_users_$UserID", $User, 0);
